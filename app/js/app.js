@@ -7,7 +7,8 @@ var foodstampsModule = angular.module('foodstamps', ['foodstamps.filters', 'food
     $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: 'HomeController'});
     $routeProvider.when('/restaurants', {templateUrl: 'partials/restaurants.html', controller: 'RestaurantsController'});
     $routeProvider.when('/lists', {templateUrl: 'partials/lists.html', controller: 'ListsController'});
-    $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileController'});
+    $routeProvider.when('/profile/', {templateUrl: 'partials/profile.html', controller: 'ProfileController'});
+    $routeProvider.when('/profile/:id', {templateUrl: 'partials/profile.html', controller: 'ProfileController'});
     $routeProvider.when('/editstamps', {templateUrl: 'partials/editstamps.html', controller: 'EditStampsController'});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);

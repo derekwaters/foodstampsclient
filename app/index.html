@@ -11,8 +11,10 @@
     <li><a href="#/restaurants">Restaurants</a></li>
     <li><a href="#/lists">Lists</a></li>
     <li><a href="#/profile">Profile</a></li>
-    <li ng-hide="!isAdminUser"><a href="#/editstamps">Edit Stamps</a></li>
+    <li ng-hide="!currentUser.isAdmin"><a href="#/editstamps">Edit Stamps</a></li>
   </ul>
+
+  <div>Welcome, {{currentUser.name}}</div>
 
   <div ng-view></div>
 
@@ -24,7 +26,12 @@
   <script src="lib/angular/angular.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
+  <script src="js/controllers/editstampscontroller.js"></script>
+  <script src="js/controllers/framecontroller.js"></script>
+  <script src="js/controllers/homecontroller.js"></script>
+  <script src="js/controllers/listscontroller.js"></script>
+  <script src="js/controllers/profilecontroller.js"></script>
+  <script src="js/controllers/restaurantscontroller.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
 </body>
