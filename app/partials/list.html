@@ -1,0 +1,4 @@
+<h1>{{theList.name}}</h1>
+<div ng-repeat="rest in restaurants | orderBy: 'name'">
+	<a href="#/restaurants/{{rest.id}}">{{rest.name}}</a>
+</div>

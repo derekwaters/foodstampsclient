@@ -1,5 +1,5 @@
-<p>The Restaurants List.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<h1>The Restaurants</h1>
+<input type="text" ng-model="search" class="search-query" placeholder="Search">
+<div ng-repeat="rest in allRestaurants | filter:search | orderBy:'name'">
+	<a href="#/restaurants/{{rest.id}}">{{rest.name}}</a>
+</div>

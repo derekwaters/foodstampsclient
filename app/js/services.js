@@ -19,6 +19,17 @@ var dummyUserData = [
 			];
 var dummyCurrentUser = 1;
 
+var dummyListData = [
+				{ id: 1, name: 'Top 100 Restaurants', restaurants: [1, 2, 3] }
+];
+
+var dummyRestaurantData = [
+				{ id: 1, name: 'Vue de Monde' },
+				{ id: 2, name: 'Spice Temple' },
+				{ id: 3, name: 'Code' },
+				{ id: 4, name: 'Balzac' }
+];
+
 
 foodStampsServices.factory('Users', 
 	function()
@@ -30,13 +41,14 @@ foodStampsServices.factory('Users',
 		};
 		usersService.findUser = function(id)
 		{
+			var	searchData = usersService.query();
 			if (id > 0)
 			{
-				for (var i = 0; i < dummyUserData.length; i++)
+				for (var i = 0; i < searchData.length; i++)
 				{
-					if (dummyUserData[i].id == id)
+					if (searchData[i].id == id)
 					{
-						return dummyUserData[i];
+						return searchData[i];
 					}
 				}
 			}
@@ -46,6 +58,79 @@ foodStampsServices.factory('Users',
 		{
 			return usersService.findUser(dummyCurrentUser);
 		};
+		usersService.getJoinedLists = function()
+		{
+			var theLists = [];
+			theLists.push(1);
+			return theLists;
+		}
 
 		return usersService;
+	});
+
+
+foodStampsServices.factory('Lists', 
+	function()
+	{
+		var listService = {};
+		listService.query = function()
+		{
+			return dummyListData;
+		};
+		listService.get = function(id)
+		{
+			var searchData = listService.query();
+			if (id > 0)
+			{
+				for (var i = 0; i < searchData.length; i++)
+				{
+					if (searchData[i].id == id)
+					{
+						return searchData[i];
+					}
+				}
+			}
+			return undefined;
+		};
+		return listService;
+	});
+
+
+foodStampsServices.factory('Restaurants', 
+	function()
+	{
+		var restaurantService = {};
+		restaurantService.query = function()
+		{
+			return dummyRestaurantData;
+		};
+		restaurantService.get = function(id)
+		{
+			var searchData = restaurantService.query();
+			if (id > 0)
+			{
+				for (var i = 0; i < searchData.length; i++)
+				{
+					if (searchData[i].id == id)
+					{
+						return searchData[i];
+					}
+				}
+			}
+			return undefined;
+		};
+		restaurantService.getList = function(restIds)
+		{
+			var result = [];
+			for (var i = 0; i < restIds.length; i++)
+			{
+				var checkRestaurant = restaurantService.get(restIds[i]);
+				if (checkRestaurant != undefined)
+				{
+					result.push(checkRestaurant);
+				}
+			}
+			return result;
+		}
+		return restaurantService;
 	});
