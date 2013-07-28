@@ -1,6 +1,18 @@
 <h1>{{theRestaurant.name}}</h1>
-
-<h5>In The Following Lists</h5>
-<div ng-repeat="list in inLists | orderBy: 'name'">
-	<a href="#/lists/{{list.id}}">{{list.name}}</a>
-</div>
+<tabs>
+	<pane title="Details">
+		Stuff goes here...
+	</pane>
+	<pane title="Gallery">
+		Stuff goes here...
+	</pane>
+	<pane title="Feed">
+		FEED IN HERE
+	</pane>
+	<pane title="Social">
+		<h5>In The Following Lists</h5>
+		<div ng-repeat="list in inLists | orderBy: 'name'">
+			<a href="#/lists/{{list.id}}">{{list.name}}</a>
+		</div>
+	</pane>
+</tabs>
