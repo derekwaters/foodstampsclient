@@ -3,8 +3,8 @@
 /* Controllers */
 
 foodstampsModule.controller('RestaurantsController',[
-	'$scope', '$routeParams', 'Restaurants', 'Lists',
-	function($scope, $routeParams, Restaurants, Lists)
+	'$scope', '$routeParams', 'Restaurants', 'Lists', 'Posts',
+	function($scope, $routeParams, Restaurants, Lists, Posts)
 	{
 		if ($routeParams.id)
 		{
@@ -17,6 +17,18 @@ foodstampsModule.controller('RestaurantsController',[
 				{
 					$scope.inLists.push(allLists[i]);
 				}
+			}
+
+			$scope.addReviewText = null;
+			$scope.posts = Posts.getPosts($scope.theRestaurant.id);
+
+			$scope.addPost = function()
+			{
+				// Add a new project
+				// 
+				Posts.addPost($scope.theRestaurant.id, $scope.addReviewText);
+				$scope.posts = Posts.getPosts($scope.theRestaurant.id);
+				$scope.addReviewText = null;
 			}
 		}
 		else
