@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-var foodstampsModule = angular.module('foodstamps', ['foodstamps.filters', 'foodstamps.services', 'foodstamps.directives']).
+var foodstampsModule = angular.module('foodstamps', ['foodstamps.filters', 'foodstamps.services', 'foodstamps.directives', 'ui.bootstrap']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: 'HomeController'});
     $routeProvider.when('/restaurants', {templateUrl: 'partials/restaurants.html', controller: 'RestaurantsController'});

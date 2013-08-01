@@ -19,16 +19,19 @@ foodstampsModule.controller('RestaurantsController',[
 				}
 			}
 
-			$scope.addReviewText = null;
-			$scope.posts = Posts.getPosts($scope.theRestaurant.id);
+			$scope.feed = {};
+			$scope.feed.addReviewText = null;
+			$scope.feed.posts = Posts.getPosts($scope.theRestaurant.id);
+			$scope.feed.addReviewMealType = 'dinner';
+			$scope.feed.addReviewScore = 0;
 
-			$scope.addPost = function()
+			$scope.feed.addPost = function()
 			{
-				// Add a new project
-				// 
-				Posts.addPost($scope.theRestaurant.id, $scope.addReviewText);
-				$scope.posts = Posts.getPosts($scope.theRestaurant.id);
-				$scope.addReviewText = null;
+				// Add a new post
+				//
+				Posts.addPost($scope.theRestaurant.id, $scope.feed.addReviewText);
+				$scope.feed.posts = Posts.getPosts($scope.theRestaurant.id);
+				$scope.feed.addReviewText = null;
 			}
 		}
 		else

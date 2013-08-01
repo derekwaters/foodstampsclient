@@ -1,24 +1,43 @@
 <h1>{{theRestaurant.name}}</h1>
-<tabs>
-	<pane title="Details">
+<tabset>
+	<tab heading="Details">
 		Stuff goes here...
-	</pane>
-	<pane title="Gallery">
+	</tab>
+	<tab heading="Gallery">
 		Stuff goes here...
-	</pane>
-	<pane title="Feed">
-		<div ng-repeat="post in posts | orderBy:'reviewDate'">
+	</tab>
+	<tab heading="Feed">
+		<div class="addreviewform">
+	      	<form ng-submit="feed.addPost()">
+	      		<label for="reviewdate">When did you visit?</label>
+	      		<datepicker ng-model="feed.addReviewDate" show-weeks="showWeeks" starting-day="1" date-disabled="disabled(date, mode)" min="minDate" max="'2015-06-22'"></datepicker>
+	      		<h4>{{feed.addReviewDate}}</h4>
+
+	      		<label for="reviewmeal">What meal did you have?</label>
+	      		<div class="btn-group">
+			        <button type="button" class="btn btn-primary" ng-model="feed.addReviewMealType" btn-radio="'breakfast'">Breakfast</button>
+			        <button type="button" class="btn btn-primary" ng-model="feed.addReviewMealType" btn-radio="'lunch'">Lunch</button>
+			        <button type="button" class="btn btn-primary" ng-model="feed.addReviewMealType" btn-radio="'dinner'">Dinner</button>
+			        <button type="button" class="btn btn-primary" ng-model="feed.addReviewMealType" btn-radio="'degustation'">Degustation</button>
+			    </div>
+			    <h4>{{feed.addReviewMealType}}</h4>
+
+	      		<label for="reviewrating">How did you rate it?</label>
+	      		<rating value="feed.addReviewScore" max="5" readonly="false"></rating>
+	      		<h4>{{feed.addReviewScore}}</h4>
+
+	        	<input type="text" ng-model="feed.addReviewText"  size="30" placeholder="Review"/>
+	        	<input class="btn-primary" type="submit" value="Post It!"/>
+	      	</form>
+	    </div>
+		<div ng-repeat="post in feed.posts | orderBy:'reviewDate'">
 			{{post.reviewText}} | blahdeblah
 		</div>
-      	<form ng-submit="addPost()">
-        	<input type="text" ng-model="addReviewText"  size="30" placeholder="Review">
-        	<input class="btn-primary" type="submit" value="Post It!">  ---::: {{addReviewText}}
-      	</form>
-	</pane>
-	<pane title="Social">
+	</tab>
+	<tab heading="Social">
 		<h5>In The Following Lists</h5>
 		<div ng-repeat="list in inLists | orderBy: 'name'">
 			<a href="#/lists/{{list.id}}">{{list.name}}</a>
 		</div>
-	</pane>
-</tabs>
+	</tab>
+</tabset>
