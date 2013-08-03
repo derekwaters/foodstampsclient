@@ -24,14 +24,22 @@ foodstampsModule.controller('RestaurantsController',[
 			$scope.feed.posts = Posts.getPosts($scope.theRestaurant.id);
 			$scope.feed.addReviewMealType = 'dinner';
 			$scope.feed.addReviewScore = 0;
+			$scope.feed.addReviewDate = null;
 
 			$scope.feed.addPost = function()
 			{
 				// Add a new post
 				//
-				Posts.addPost($scope.theRestaurant.id, $scope.feed.addReviewText);
+				Posts.addPost($scope.theRestaurant.id,
+							  $scope.feed.addReviewDate,
+							  $scope.feed.addReviewMealType,
+							  $scope.feed.addReviewScore,
+							  $scope.feed.addReviewText);
 				$scope.feed.posts = Posts.getPosts($scope.theRestaurant.id);
 				$scope.feed.addReviewText = null;
+				$scope.feed.addReviewDate = null;
+				$scope.feed.addReviewScore = 0;
+				$scope.feed.addReviewMealType = 'dinner';
 			}
 		}
 		else

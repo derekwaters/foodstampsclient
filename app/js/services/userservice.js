@@ -8,7 +8,7 @@ var dummyUserData = [
 			];
 var dummyCurrentUser = 1;
 
-foodStampsServices.factory('Users', 
+foodStampsServices.factory('Users',
 	function()
 	{
 		var usersService = {};
@@ -40,6 +40,10 @@ foodStampsServices.factory('Users',
 			var theLists = [];
 			theLists.push(1);
 			return theLists;
+		}
+		usersService.getUserUrl = function(userId)
+		{
+			return "/#/profile/" + userId;
 		}
 
 		return usersService;

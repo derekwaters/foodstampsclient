@@ -1,8 +1,8 @@
 'use strict';
 
 
-foodStampsServices.factory('Posts', 
-	function()
+foodStampsServices.factory('Posts',
+	function(Users)
 	{
 		var postsService = {};
 		postsService.postCache = new Object();
@@ -14,11 +14,14 @@ foodStampsServices.factory('Posts',
 			}
 			return postsService.postCache[restaurantId];
 		};
-		postsService.addPost = function(restaurantId, reviewText)
+		postsService.addPost = function(restaurantId, reviewDate, reviewMealType, reviewScore, reviewText)
 		{
 			var newPost = {};
-			newPost.reviewDate = new Date();
+			newPost.reviewedBy = Users.getCurrentUser().id;
+			newPost.reviewDate = reviewDate;
 			newPost.reviewText = reviewText;
+			newPost.reviewMealType = reviewMealType;
+			newPost.reviewScore = reviewScore;
 			if (postsService.postCache[restaurantId] == null)
 			{
 				postsService.postCache[restaurantId] = [];

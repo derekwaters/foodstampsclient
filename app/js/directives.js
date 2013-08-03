@@ -74,3 +74,21 @@ foodstampsDirectives.directive('datepicker', function() {
     }
 });
 */
+
+foodstampsDirectives.directive('userbadge', ['Users', function(Users) {
+    return {
+        restrict: 'E',
+        scope: { },
+        replace: true,
+        link: function (scope, element, attrs)
+        {
+          scope.theUser = Users.findUser(attrs.userid);
+          scope.theUserUrl = Users.getUserUrl(attrs.userid);
+        },
+        template:
+          '<div class="userbadge"><a href="{{theUserUrl}}">' +
+            '<div class="userbadge-name">{{theUser.name}}</div>' +
+            '<div class="userbadge-avatar">IMG HERE</div>' +
+          '</a></div>'
+    };
+  }]);
