@@ -30,8 +30,7 @@
 	        	<input class="btn-primary" type="submit" value="Post It!"/>
 	      	</form>
 	    </div>
-		<div ng-repeat="post in feed.posts | orderBy:'reviewDate'">
-			<userbadge userid="{{post.reviewedBy}}"/>{{post.reviewDate}} and gave it a score of {{post.reviewScore}}: {{post.reviewText}}
+		<div ng-repeat="post in feed.posts | orderBy:'reviewDate'">{{post.reviewDate}} and gave it a score of {{post.reviewScore}}: {{post.reviewText}}  {{post.reviewedBy}} <div userbadge="{{post.reviewedBy}}"></div>
 		</div>
 	</tab>
 	<tab heading="Social">
