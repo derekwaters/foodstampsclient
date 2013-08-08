@@ -1,14 +1,14 @@
 'use strict';
 
 var dummyRestaurantData = [
-				{ id: 1, name: 'Vue de Monde' },
-				{ id: 2, name: 'Spice Temple' },
-				{ id: 3, name: 'Code' },
-				{ id: 4, name: 'Balzac' }
+				{ id: 1, name: 'Vue de Monde', location : { latitude: -37.816095, longitude: 144.960198 } },
+				{ id: 2, name: 'Spice Temple', location : { latitude: -33.866019, longitude: 151.210339 } },
+				{ id: 3, name: 'Code', location: { latitude: -37.814251, longitude: 144.963169 } },
+				{ id: 4, name: 'Balzac', location: { latitude: -33.916304, longitude: 151.241099 } }
 ];
 
 
-foodStampsServices.factory('Restaurants', 
+foodStampsServices.factory('Restaurants',
 	function()
 	{
 		var restaurantService = {};

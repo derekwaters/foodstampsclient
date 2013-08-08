@@ -9,6 +9,15 @@ foodstampsModule.controller('RestaurantsController',[
 		if ($routeParams.id)
 		{
 			$scope.theRestaurant = Restaurants.get($routeParams.id);
+			$scope.map = {};
+			$scope.map.center = $scope.theRestaurant.location;
+			$scope.map.zoom = 15;
+			$scope.map.markers = [];
+			var restaurantMarker = {};
+			restaurantMarker.latitude = $scope.map.center.latitude;
+			restaurantMarker.longitude = $scope.map.center.longitude;
+			$scope.map.markers.push(restaurantMarker);
+
 			$scope.inLists = [];
 			var allLists = Lists.query();
 			for (var i = 0; i < allLists.length; i++)
@@ -40,6 +49,17 @@ foodstampsModule.controller('RestaurantsController',[
 				$scope.feed.addReviewDate = null;
 				$scope.feed.addReviewScore = 0;
 				$scope.feed.addReviewMealType = 'dinner';
+			}
+
+			$scope.feed.addComment = function(toPost)
+			{
+				// Add a new comment
+				//
+				Posts.addComment($scope.theRestaurant.id,
+								 toPost.id,
+								 toPost.addComment);
+				$scope.feed.posts = Posts.getPosts($scope.theRestaurant.id);
+				toPost.reviewText = null;
 			}
 		}
 		else

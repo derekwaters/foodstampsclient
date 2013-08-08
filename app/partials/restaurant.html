@@ -1,7 +1,8 @@
 <h1>{{theRestaurant.name}}</h1>
 <tabset>
 	<tab heading="Details">
-		Stuff goes here...
+		Restaurant Details
+		<google-map center="map.center" draggable="true" zoom="map.zoom" markers="map.markers" style="height: 400px; display: block"></google-map>
 	</tab>
 	<tab heading="Gallery">
 		Stuff goes here...
@@ -30,7 +31,19 @@
 	        	<input class="btn-primary" type="submit" value="Post It!"/>
 	      	</form>
 	    </div>
-		<div ng-repeat="post in feed.posts | orderBy:'reviewDate'">{{post.reviewDate}} and gave it a score of {{post.reviewScore}}: {{post.reviewText}}  {{post.reviewedBy}} <div userbadge="{{post.reviewedBy}}"></div>
+		<div ng-repeat="post in feed.posts | orderBy:'reviewDate'">{{post.reviewDate}} and gave it a score of {{post.reviewScore}}: {{post.reviewText}}  {{post.reviewedBy}}
+
+			<div class="postcomment">
+				<form ng-submit="feed.addComment({{post}})">
+					<label for="commenttext">Comment:</label><input type="text" ng-model="post.addComment" size="30" placeholder="Comment"/>
+					<input class="btn-primary" type="submit" value="Comment It!"/>
+				</form>
+			</div>
+			<div class="commentarea">
+				<div ng-repeat="comment in post.comments | orderBy:'commentDate'">{{comment.commentBy}} : {{comment.text}}</div>
+			</div>
+
+		</div>
 		</div>
 	</tab>
 	<tab heading="Social">
