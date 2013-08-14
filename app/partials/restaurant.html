@@ -31,7 +31,7 @@
 	        	<input class="btn-primary" type="submit" value="Post It!"/>
 	      	</form>
 	    </div>
-		<div ng-repeat="post in feed.posts | orderBy:'reviewDate'">{{post.reviewDate}} and gave it a score of {{post.reviewScore}}: {{post.reviewText}}  {{post.reviewedBy}}
+		<div ng-repeat="post in feed.posts | orderBy:'reviewDate'">{{post.reviewedOn}} and gave it a score of {{post.score}}: {{post.content}}  {{post.reviewedBy}}
 
 			<div class="postcomment">
 				<form ng-submit="feed.addComment({{post}})">
@@ -40,7 +40,7 @@
 				</form>
 			</div>
 			<div class="commentarea">
-				<div ng-repeat="comment in post.comments | orderBy:'commentDate'">{{comment.commentBy}} : {{comment.text}}</div>
+				<div ng-repeat="comment in post.comments | orderBy:'commentDate'">{{comment.commentBy}} : {{comment.content}}</div>
 			</div>
 
 		</div>

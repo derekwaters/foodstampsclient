@@ -33,10 +33,10 @@ foodStampsServices.factory('Posts',
 			var newPost = {};
 			newPost.id = Math.floor(Math.random() * 1000000);
 			newPost.reviewedBy = Users.getCurrentUser().id;
-			newPost.reviewDate = reviewDate;
-			newPost.reviewText = reviewText;
-			newPost.reviewMealType = reviewMealType;
-			newPost.reviewScore = reviewScore;
+			newPost.visitedOn = reviewDate;
+			newPost.content = reviewText;
+			newPost.mealType = reviewMealType;
+			newPost.score = reviewScore;
 			newPost.reviewedOn = new Date();
 			newPost.restaurantId = restaurantId;
 
@@ -53,8 +53,8 @@ foodStampsServices.factory('Posts',
 			var storedPost = this.getPost(restaurantId, postId);
 			var newComment = {};
 			newComment.commentBy = Users.getCurrentUser().id;
-			newComment.text = commentText;
-			newComment.commentDate = new Date();
+			newComment.content = commentText;
+			newComment.commentedOn = new Date();
 			if (storedPost.comments === undefined)
 			{
 				storedPost.comments = [];

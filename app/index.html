@@ -16,7 +16,7 @@
     <li ng-hide="!currentUser.isAdmin"><a href="#/editstamps">Edit Stamps</a></li>
   </ul>
 
-  <div>Welcome, {{currentUser.name}}</div>
+  <span>Welcome, {{currentUser.name}}</span>
 
   <div ng-view></div>
 
@@ -34,6 +34,7 @@
   <script src="js/services/listsservice.js"></script>
   <script src="js/services/restaurantsservice.js"></script>
   <script src="js/services/postsservice.js"></script>
+  <script src="js/services/feedservice.js"></script>
   <script src="js/controllers/editstampscontroller.js"></script>
   <script src="js/controllers/framecontroller.js"></script>
   <script src="js/controllers/homecontroller.js"></script>

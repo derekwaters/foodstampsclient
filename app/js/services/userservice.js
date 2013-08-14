@@ -2,11 +2,39 @@
 
 
 var dummyUserData = [
-				{ id: 1, name: 'Derek', email: 'derek@foodstamps.com', isAdmin: true },
-				{ id: 2, name: 'Alice', email: 'alice@foodstamps.com', isAdmin: false },
-				{ id: 3, name: 'Wayne', email: 'wayne@foodstamps.com', isAdmin: true }
+				{ id: 1,
+				  name: 'Derek',
+				  email: 'derek@foodstamps.com',
+				  avatar: null,
+				  gender: 'Male',
+				  location: 'Melbourne',
+				  tutorialProgress: 0,
+				  isAdmin: true,
+				  following: [ 2, 3 ],
+				  followedBy: [ 2 ] },
+				{ id: 2,
+				  name: 'Alice',
+				  email: 'alice@foodstamps.com',
+				  avatar : null,
+				  gender : 'Female',
+				  location: 'Melbourne',
+				  tutorialProgress: 0,
+				  isAdmin: false,
+				  following: [ 1, 3 ],
+				  followedBy: [ 1 ] },
+				{ id: 3,
+				  name: 'Wayne',
+				  email: 'wayne@foodstamps.com',
+				  avatar: null,
+				  gender: 'Male',
+				  location: 'Melbourne',
+				  tutorialProgress: 0,
+				  isAdmin: true,
+				  following: [ ],
+				  followedBy: [ 1, 2 ] }
 			];
 var dummyCurrentUser = 1;
+
 
 foodStampsServices.factory('Users',
 	function()
