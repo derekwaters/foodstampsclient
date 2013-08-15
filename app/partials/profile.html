@@ -1,6 +1,38 @@
-<p>The User's Profile.</p>
-
-<p>Name: {{profileUser.name}}</p>
-
-<p ng-hide='!isCurrent'>Update Profile</p>
-			
+<h1>{{theRestaurant.name}}</h1>
+<tabset>
+	<tab heading="Details">
+		<form ng-submit="Users.updateProfile()">
+			<div class="profile-label">Name</div>
+			<div class="profile-value"><input type="text" ng-model="profileUser.name"  size="30" placeholder="Name"/></div>
+			<div class="profile-label">Email</div>
+			<div class="profile-value"><input type="text" ng-model="profileUser.email" size="50" placeholder="Email Address"/></div>
+			<div class="profile-label">Avatar</div>
+			<div class="profile-value">[[[]]]</div>
+			<div class="profile-label">Gender</div>
+			<div class="profile-value">
+				<input type="radio" ng-model="profileUser.gender" name="gender" value="male">Male</input>
+				<input type="radio" ng-model="profileUser.gender" name="gender" value="female">Female</input>
+				<input type="radio" ng-model="profileUser.gender" name="gender" value="unspecified">Unspecified</input>
+			</div>
+			<div class="profile-label">Location</div>
+			<div class="profile-value"><input type="text" ng-model="profileUser.location" placeholder="Location"/></div>
+			<div class="profile-label">Settings</div>
+			<input ng-hide="!isCurrent" type="submit" value="Update"/>
+		</form>
+	</tab>
+	<tab heading="Following">
+		<div ng-repeat="following in profileUser.following">
+			<div userbadge="{{following}}"/>
+		</div>
+	</tab>
+	<tab heading="Followers">
+		<div ng-repeat="followedBy in profileUser.followedBy">
+			<div userbadge="{{followedBy}}"/>
+		</div>
+	</tab>
+	<tab heading="Stamps">
+		<div ng-repeat="userAchievent in profileUser.achievements">
+			{{userAchievement.achievement.name}}
+		</div>
+	</tab>
+</tabset>

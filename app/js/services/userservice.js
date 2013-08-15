@@ -73,7 +73,23 @@ foodStampsServices.factory('Users',
 		{
 			return "/#/profile/" + userId;
 		}
-
+		usersService.updateUser = function(userProfile)
+		{
+			var	searchData = usersService.query();
+			if (id > 0)
+			{
+				for (var i = 0; i < searchData.length; i++)
+				{
+					if (searchData[i].id == id)
+					{
+						searchData[i].name = userProfile.name;
+						searchData[i].email = userProfile.email;
+						searchData[i].gender = userProfile.gender;
+						searchData[i].location = userProfile.location;
+					}
+				}
+			}
+		}
 		return usersService;
 	});
 

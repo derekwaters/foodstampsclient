@@ -3,7 +3,7 @@
 /* Controllers */
 
 foodstampsModule.controller('ProfileController',[
-	'$scope', '$routeParams', 'Users', 
+	'$scope', '$routeParams', 'Users',
 	function($scope, $routeParams, Users)
 	{
 		if ($routeParams.id)
@@ -15,6 +15,10 @@ foodstampsModule.controller('ProfileController',[
 		{
 			$scope.profileUser = Users.getCurrentUser();
 			$scope.isCurrent = true;
+		}
+		$scope.profileUser.update = function ()
+		{
+			Users.updateUser($scope.profileUser);
 		}
 	}
 ]);
