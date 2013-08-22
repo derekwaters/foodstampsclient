@@ -8,7 +8,7 @@ foodstampsModule.controller('ProfileController',[
 	{
 		if ($routeParams.id)
 		{
-			$scope.profileUser = Users.findUser($routeParams.id);
+			$scope.profileUser = Users.get($routeParams.id);
 			$scope.isCurrent = ($routeParams.id == Users.getCurrentUser().id);
 		}
 		else

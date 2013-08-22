@@ -15,9 +15,6 @@
     <li><a href="#/profile">Profile</a></li>
     <li ng-hide="!currentUser.isAdmin"><a href="#/editstamps">Edit Stamps</a></li>
   </ul>
-
-  <span>Welcome, {{currentUser.name}}</span>
-
   <div ng-view></div>
 
   <!-- In production use:
@@ -30,6 +27,7 @@
   <script src="lib/hovercard/angular-hovercard.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services/services.js"></script>
+  <script src="js/services/stampsservice.js"></script>
   <script src="js/services/userservice.js"></script>
   <script src="js/services/listsservice.js"></script>
   <script src="js/services/restaurantsservice.js"></script>

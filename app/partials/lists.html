@@ -1,14 +1,14 @@
 <p>The Lists.</p>
-<tabs>
-	<pane title="All">
+<tabset>
+	<tab heading="All">
 		<input type="text" ng-model="search" class="search-query" placeholder="Search">
 		<div ng-repeat="list in allLists | filter:search | orderBy:'name'">
 			<a href="#/lists/{{list.id}}">{{list.name}}</a>
 		</div>
-	</pane>
-	<pane title="Joined">
+	</tab>
+	<tab heading="Joined">
 		<div ng-repeat="list in joinedLists">
 			<a href="#/lists/{{list.list.id}}">{{list.list.name}}</a> | {{list.score}} / {{list.totalScore}} | {{list.totalVisits}}
 		</div>
-	</pane>
-</tabs>
+	</tab>
+</tabset>

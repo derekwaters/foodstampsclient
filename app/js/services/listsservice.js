@@ -35,6 +35,10 @@ foodStampsServices.factory('Lists',
 			}
 			return undefined;
 		};
+		listService.getListUrl = function(id)
+		{
+			return "#/lists/" + id;
+		}
 		return listService;
 	});
 

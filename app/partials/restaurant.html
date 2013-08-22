@@ -1,8 +1,13 @@
-<h1>{{theRestaurant.name}}</h1>
+<div class="restheader" id="restheader"><div class="restheadertitle">{{theRestaurant.name}}</div></div>
 <tabset>
 	<tab heading="Details">
-		Restaurant Details
+		<div>Cuisine: {{theRestaurant.cuisine}}</div>
+		<div>Chef: {{theRestaurant.chef}}</div>
+		<div>{{theRestaurant.address}}</div>
 		<google-map center="map.center" draggable="true" zoom="map.zoom" markers="map.markers" style="height: 400px; display: block"></google-map>
+		<div class="phonenumber">Phone: {{theRestaurant.phone}}</div>
+		<div class="restemail">Email: <a href="mailto:{{theRestaurant.email}}">{{theRestaurant.email}}</a></div>
+		<div class="resturl">Web: <a href="{{theRestaurant.website}}">{{theRestaurant.website}}</a></div>
 	</tab>
 	<tab heading="Gallery">
 		Stuff goes here...

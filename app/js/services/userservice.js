@@ -44,7 +44,7 @@ foodStampsServices.factory('Users',
 		{
 			return dummyUserData;
 		};
-		usersService.findUser = function(id)
+		usersService.get = function(id)
 		{
 			var	searchData = usersService.query();
 			if (id > 0)
@@ -61,7 +61,7 @@ foodStampsServices.factory('Users',
 		};
 		usersService.getCurrentUser = function()
 		{
-			return usersService.findUser(dummyCurrentUser);
+			return usersService.get(dummyCurrentUser);
 		};
 		usersService.getJoinedLists = function()
 		{
@@ -71,7 +71,7 @@ foodStampsServices.factory('Users',
 		}
 		usersService.getUserUrl = function(userId)
 		{
-			return "/#/profile/" + userId;
+			return "#/profile/" + userId;
 		}
 		usersService.updateUser = function(userProfile)
 		{

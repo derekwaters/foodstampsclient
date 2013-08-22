@@ -1,3 +1,13 @@
-<p>The Home Screen.</p>
+<p>Your Feed</p>
 
-How about <hovercard hover-tmpl-url="'partials/hoverCardDetail.html'">Hover over here</hovercard>.
+<div ng-repeat="feedItem in feedItems | orderBy:'ondate'" ng-switch on="feedItem.itemtype">
+	<div class="feedpost" ng-switch-when="follows_you"><a href="{{feedItem.otheruser.url}}">{{feedItem.otheruser.name}}</a> followed you on {{feedItem.ondate}}</div>
+	<div class="feedpost" ng-switch-when="you_visited">On {{feedItem.ondate}} you <a href="{{feeditem.review.url}}">reviewed</a> <a href="{{feedItem.restaurant.url}}">{{feedItem.restaurant.name}}</a></div>
+	<div class="feedpost" ng-switch-when="someone_commented"><a href="{{feedItem.otheruser.url}}">{{feedItem.otheruser.name}}</a> commented on your <a href="{{feeditem.review.url}}">review</a></div>
+	<div class="feedpost" ng-switch-when="someone_reviewed"><a href="{{feedItem.otheruser.url}}">{{feedItem.otheruser.name}}</a> <a href="{{feedItem.review.url}}">reviewed</a> <a href="{{feedItem.restaurant.url}}">{{feedItem.restaurant.name}}</a> on {{feedItem.ondate}}</div>
+	<div class="feedpost" ng-switch-when="you_achieved">Yay! You achieved {{feedItem.achievement.name}} on {{feedItem.ondate}}!</div>
+	<div class="feedpost" ng-switch-when="someone_achieved">Yay! Someone achieved {{feedItem.achievement.name}}!</div>
+	<div class="feedpost" ng-switch-when="you_joined">On {{feedItem.ondate}} you joined the list <a href="{{feedItem.list.url}}">{{feedItem.list.name}}</a></div>
+	<div class="feedpost" ng-switch-when="someone_joined">On {{feedItem.ondate}} <a href="{{feedItem.otheruser.url}}">{{feedItem.otheruser.name}}</a> joined the list <a href="{{feedItem.list.url}}">{{feedItem.list.name}}</a></div>
+	<div class="feedpost" ng-switch-default>Uhoh</div>
+</div>

@@ -14,7 +14,7 @@ foodstampsDirectives.directive('userbadge', ['Users', function(Users) {
           attrs.$observe('userbadge', function(value)
           {
             scope.badge = {};
-            scope.badge.user = Users.findUser(value);
+            scope.badge.user = Users.get(value);
             scope.badge.url = Users.getUserUrl(value);
           });
         },

@@ -88,5 +88,9 @@ foodStampsServices.factory('Restaurants',
 			}
 			return result;
 		}
+		restaurantService.getRestaurantUrl = function(restId)
+		{
+			return "#/restaurants/" + restId;
+		}
 		return restaurantService;
 	});

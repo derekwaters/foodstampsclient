@@ -14,7 +14,7 @@ foodStampsServices.factory('Posts',
 			}
 			return postsService.postCache[restaurantId];
 		};
-		postsService.getPost = function(restaurantId, postId)
+		postsService.get = function(restaurantId, postId)
 		{
 			if (postsService.postCache[restaurantId] != null)
 			{
@@ -27,6 +27,10 @@ foodStampsServices.factory('Posts',
 				}
 			}
 			return undefined;
+		}
+		postsService.getPostUrl = function(postId)
+		{
+			return "#/review/" + postId;
 		}
 		postsService.addPost = function(restaurantId, reviewDate, reviewMealType, reviewScore, reviewText)
 		{
@@ -50,7 +54,7 @@ foodStampsServices.factory('Posts',
 		}
 		postsService.addComment = function(restaurantId, postId, commentText)
 		{
-			var storedPost = this.getPost(restaurantId, postId);
+			var storedPost = this.get(restaurantId, postId);
 			var newComment = {};
 			newComment.commentBy = Users.getCurrentUser().id;
 			newComment.content = commentText;
