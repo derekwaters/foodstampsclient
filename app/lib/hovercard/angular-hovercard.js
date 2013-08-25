@@ -3,7 +3,7 @@ angular.module('angular-hovercard', []).directive('hovercard', function () {
   return {
     restrict: 'E',
     transclude: true,
-    templateUrl: 'angular-hovercard.tmpl',
+    templateUrl: 'partials/angular-hovercard.tmpl',
     scope: {
       background: '@',
       hoverTmplUrl: '=',

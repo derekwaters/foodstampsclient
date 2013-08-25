@@ -1,5 +1,7 @@
 <p>Your Feed</p>
 
+<hovercard hover-tmpl-url="'partials/hoverCardDetail.html'">Hover over here</hovercard>
+
 <div ng-repeat="feedItem in feedItems | orderBy:'ondate'" ng-switch on="feedItem.itemtype">
 	<div class="feedpost" ng-switch-when="follows_you"><a href="{{feedItem.otheruser.url}}">{{feedItem.otheruser.name}}</a> followed you on {{feedItem.ondate}}</div>
 	<div class="feedpost" ng-switch-when="you_visited">On {{feedItem.ondate}} you <a href="{{feeditem.review.url}}">reviewed</a> <a href="{{feedItem.restaurant.url}}">{{feedItem.restaurant.name}}</a></div>
