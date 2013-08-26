@@ -7,7 +7,8 @@
 			<div class="profile-label">Email</div>
 			<div class="profile-value"><input type="text" ng-model="profileUser.email" size="50" placeholder="Email Address"/></div>
 			<div class="profile-label">Avatar</div>
-			<div class="profile-value">[[[]]]</div>
+			<div class="profile-value" file-input="avatar.file" on-change="avatar.uploadFile()"></div><div class="profile-value">{{avatar.progress}}</div>
+			<img ng-src="{{avatar.imageSrc}}"/>
 			<div class="profile-label">Gender</div>
 			<div class="profile-value">
 				<input type="radio" ng-model="profileUser.gender" name="gender" value="male">Male</input>
