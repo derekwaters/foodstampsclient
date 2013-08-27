@@ -4,6 +4,55 @@
 
 var foodstampsDirectives = angular.module('foodstamps.directives', []);
 
+foodstampsDirectives.directive('tabset', function() {
+    return {
+      restrict: 'E',
+      transclude: true,
+      scope: {},
+      controller: function($scope, $element) {
+        var panes = $scope.panes = [];
+
+        $scope.select = function(pane) {
+          angular.forEach(panes, function(pane) {
+            pane.selected = false;
+          });
+          pane.selected = true;
+        }
+
+        this.addPane = function(pane) {
+          if (panes.length == 0) $scope.select(pane);
+          panes.push(pane);
+        }
+      },
+      template:
+        '<div class="tabbable">' +
+          '<ul class="nav-tabs">' +
+            '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
+              '<a href="" ng-click="select(pane)">{{pane.heading}}</a>' +
+            '</li>' +
+          '</ul>' +
+          '<div class="tab-content" ng-transclude></div>' +
+        '</div>',
+      replace: true
+    };
+  });
+
+foodstampsDirectives.directive('tab', function() {
+    return {
+      require: '^tabset',
+      restrict: 'E',
+      transclude: true,
+      scope: { heading: '@' },
+      link: function(scope, element, attrs, tabsCtrl) {
+        tabsCtrl.addPane(scope);
+      },
+      template:
+        '<div class="tab-pane" ng-class="{active: selected}" ng-transclude>' +
+        '</div>',
+      replace: true
+    };
+  })
+
 foodstampsDirectives.directive('userbadge', ['Users', function(Users) {
     return {
         restrict: 'A',
