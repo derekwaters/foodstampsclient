@@ -5,19 +5,46 @@
   <title>Foodstamps</title>
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/angular-hovercard.min.css"/>
-  <link rel="stylesheet" href="css/fs.css"/>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto"/>
 </head>
 <body ng-controller="FrameController">
   <div ng-hide="true" class="jswarning">Javascript is required for this website.</div>
-  <ul class="menu">
-    <li><a href="#/">Home</a></li>
-    <li><a href="#/restaurants">Restaurants</a></li>
-    <li><a href="#/lists">Lists</a></li>
-    <li><a href="#/profile">Profile</a></li>
-    <li ng-hide="!currentUser.isAdmin"><a href="#/editstamps">Edit Stamps</a></li>
-  </ul>
-  <div ng-view></div>
+  <div class="container">
+    <div class="header-area">
+      <div class="header-logo">LOGO GOES HERE</div>
+      <div class="search-bar" ng-controller="SearchController">
+        <form ng-submit="search.doSearch()">
+          <input type="text" ng-model="search.text" size="20" placeholder="Search"/>
+          <input class="btn-primary" type="submit" value="Search"/>
+        </form>
+      </div>
+      <div class="user-area">
+
+        <div ng-if="currentUser">
+          <div userbadge="{{currentUser.id}}"></div>
+        </div>
+        <div ng-if="currentUser == null">
+          <a href="/login">login</a> | <a href="/signup">signup</a>
+        </div>
+      </div>
+    </div>
+    <div class="body-area">
+      <div class="menu-area">
+        <ul class="menu">
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/restaurants">Restaurants</a></li>
+          <li><a href="#/lists">Lists</a></li>
+          <li><a href="#/profile">Profile</a></li>
+          <li ng-hide="!currentUser.isAdmin"><a href="#/editstamps">Edit Stamps</a></li>
+        </ul>
+      </div>
+      <div class="content-area" ng-view>
+      </div>
+      <div class="extra-area">
+      </div>
+    </div>
+    <div class="footer">FoodStamps .privacy... ...contact... </div>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
@@ -41,6 +68,7 @@
   <script src="js/controllers/listscontroller.js"></script>
   <script src="js/controllers/profilecontroller.js"></script>
   <script src="js/controllers/restaurantscontroller.js"></script>
+  <script src="js/controllers/searchcontroller.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
 </body>
