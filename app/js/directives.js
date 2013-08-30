@@ -2,9 +2,9 @@
 
 /* Directives */
 
-var foodstampsDirectives = angular.module('foodstamps.directives', []);
+var foodStampsDirectives = angular.module('foodStamps.directives', []);
 
-foodstampsDirectives.directive('tabset', function() {
+foodStampsDirectives.directive('tabset', function() {
     return {
       restrict: 'E',
       transclude: true,
@@ -37,7 +37,7 @@ foodstampsDirectives.directive('tabset', function() {
     };
   });
 
-foodstampsDirectives.directive('tab', function() {
+foodStampsDirectives.directive('tab', function() {
     return {
       require: '^tabset',
       restrict: 'E',
@@ -53,19 +53,20 @@ foodstampsDirectives.directive('tab', function() {
     };
   })
 
-foodstampsDirectives.directive('userbadge', ['Users', function(Users) {
+foodStampsDirectives.directive('userbadge', ['Users', function(Users) {
     return {
-        restrict: 'A',
-        replace: false,
-        scope: {},
+        restrict: 'E',
+        replace: true,
+        transclude: false,
+        scope:
+        {
+          userid:'@userid'
+        },
         link: function (scope, element, attrs)
         {
-          attrs.$observe('userbadge', function(value)
-          {
-            scope.badge = {};
-            scope.badge.user = Users.get(value);
-            scope.badge.url = Users.getUserUrl(value);
-          });
+          scope.badge = {};
+          scope.badge.user = Users.get(scope.userid);
+          scope.badge.url = Users.getUserUrl(scope.userid);
         },
         template:
           '<div class="userbadge"><a href="{{badge.url}}">' +
@@ -76,7 +77,7 @@ foodstampsDirectives.directive('userbadge', ['Users', function(Users) {
   }]);
 
 
-foodstampsDirectives.directive('fileInput', ['$parse', function($parse)
+foodStampsDirectives.directive('fileInput', ['$parse', function($parse)
 {
     return {
       restrict: "EA",

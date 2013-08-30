@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-foodstampsModule.controller('ProfileController',[
+foodStampsModule.controller('ProfileController',[
 	'$scope', '$routeParams', 'Users', 'FileReaderService',
 	function($scope, $routeParams, Users, FileReaderService)
 	{

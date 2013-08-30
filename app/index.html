@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="foodstamps">
+<html lang="en" ng-app="foodStamps" id="fsroot">
 <head>
   <meta charset="utf-8">
   <title>Foodstamps</title>
@@ -20,11 +20,17 @@
       </div>
       <div class="user-area">
 
-        <div ng-if="currentUser">
-          <div userbadge="{{currentUser.id}}"></div>
+        <div ng-hide="!hasCurrentUser()">
+          <userbadge user-id="currentUser.id"></userbadge>
         </div>
-        <div ng-if="currentUser == null">
-          <a href="/login">login</a> | <a href="/signup">signup</a>
+        <div ng-hide="hasCurrentUser()" class="welcome">
+          Put blurb here about how freakin awesome FOodstamps is, and why you should use your G+ account to signup.<br/><br/>
+
+          <form ng-submit="doTheThing()">
+            <input class="btn-primary" type="submit" value="Pissoff"/>
+          </form>
+
+          <g+signin clientid="103343269498-h476el94jmvopof53do1ssnjdokm1s5s" data-theme="dark"></g+signin>
         </div>
       </div>
     </div>
@@ -53,6 +59,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC84kQjCImrLfKi0meZO-R8lNqA5z4LUD0&sensor=false"></script>
   <script src="lib/google-maps/angular-google-maps.js"></script>
   <script src="lib/hovercard/angular-hovercard.js"></script>
+  <script src="lib/signin/google-plus-signin.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services/services.js"></script>
   <script src="js/services/stampsservice.js"></script>

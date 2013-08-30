@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-foodstampsModule.controller('ListsController',[
-	'$scope', '$routeParams', 'Users', 'Lists', 'Restaurants', 
+foodStampsModule.controller('ListsController',[
+	'$scope', '$routeParams', 'Users', 'Lists', 'Restaurants',
 	function($scope, $routeParams, Users, Lists, Restaurants)
 	{
 		if ($routeParams.id)

@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-foodstampsModule.controller('HomeController',[
+foodStampsModule.controller('HomeController',[
 	'$scope', 'Feed', 'Users', 'Lists', 'Restaurants', 'Posts', 'Stamps',
 	function($scope, Feed, Users, Lists, Restaurants, Posts, Stamps)
 	{

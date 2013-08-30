@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-foodstampsModule.controller('RestaurantsController',[
+foodStampsModule.controller('RestaurantsController',[
 	'$scope', '$routeParams', 'Restaurants', 'Lists', 'Posts',
 	function($scope, $routeParams, Restaurants, Lists, Posts)
 	{

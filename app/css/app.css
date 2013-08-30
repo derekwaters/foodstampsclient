@@ -1,5 +1,16 @@
 /* app css stylesheet */
 
+.welcome
+{
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  right: 50px;
+  bottom: 50px;
+  background-color: #000;
+  border: solid 1px #555;
+}
+
 body
 {
   background-color: black;

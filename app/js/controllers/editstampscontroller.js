@@ -2,7 +2,7 @@
 
 /* Edit Stamps Controller */
 
-foodstampsModule.controller('EditStampsController',[
+foodStampsModule.controller('EditStampsController',[
 	'$scope',
 	function($scope)
 	{

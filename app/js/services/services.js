@@ -1,3 +1,3 @@
 'use strict';
 
-var foodStampsServices = angular.module('foodstamps.services', []);
+var foodStampsServices = angular.module('foodStamps.services', []);

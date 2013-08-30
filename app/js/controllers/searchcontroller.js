@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-foodstampsModule.controller('SearchController',[
+foodStampsModule.controller('SearchController',[
 	'$scope',
 	function($scope)
 	{

@@ -33,13 +33,35 @@ var dummyUserData = [
 				  following: [ ],
 				  followedBy: [ 1, 2 ] }
 			];
-var dummyCurrentUser = 1;
+
+
+function signinCallback(authResult)
+{
+	console.log(authResult);
+	if (authResult['access_token'])
+	{
+		var injector = angular.element(document.getElementById('fsroot')).injector();
+		if (injector)
+		{
+			var usersService = injector.get('Users');
+			if (usersService)
+			{
+				usersService.setCurrentUser(1);
+			}
+		}
+	}
+	//else
+	//{
+	//	alert("Boo!");
+	//}
+}
 
 
 foodStampsServices.factory('Users',
 	function()
 	{
 		var usersService = {};
+		usersService.currentId = undefined;
 		usersService.query = function()
 		{
 			return dummyUserData;
@@ -61,8 +83,12 @@ foodStampsServices.factory('Users',
 		};
 		usersService.getCurrentUser = function()
 		{
-			return usersService.get(dummyCurrentUser);
+			return usersService.get(usersService.currentId);
 		};
+		usersService.setCurrentUser = function(newUserId)
+		{
+			usersService.currentId = newUserId;
+		}
 		usersService.getJoinedLists = function()
 		{
 			var theLists = [];
