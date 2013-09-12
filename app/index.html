@@ -5,6 +5,7 @@
   <title>Foodstamps</title>
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/angular-hovercard.min.css"/>
+  <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css"/>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto"/>
 </head>
 <body ng-controller="FrameController">
@@ -21,7 +22,7 @@
       <div class="user-area">
 
         <div ng-hide="!hasCurrentUser()">
-          <userbadge user-id="currentUser.id"></userbadge>
+          <div userbadge userid="{{currentUser.id}}"></div>
         </div>
         <div ng-hide="hasCurrentUser()" class="welcome">
           Put blurb here about how freakin awesome FOodstamps is, and why you should use your G+ account to signup.<br/><br/>
@@ -60,6 +61,9 @@
   <script src="lib/google-maps/angular-google-maps.js"></script>
   <script src="lib/hovercard/angular-hovercard.js"></script>
   <script src="lib/signin/google-plus-signin.js"></script>
+  <script src="lib/jqueryui/jquery-1.9.1.js"></script>
+  <script src="lib/jqueryui/jquery-ui-1.10.3.custom.js"></script>
+  <script src="lib/ui-date/date.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services/services.js"></script>
   <script src="js/services/stampsservice.js"></script>

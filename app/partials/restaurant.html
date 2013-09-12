@@ -16,7 +16,7 @@
 		<div class="addreviewform">
 	      	<form ng-submit="feed.addPost()">
 	      		<label for="reviewdate">When did you visit?</label>
-	      		<datepicker ng-model="feed.addReviewDate" show-weeks="showWeeks" starting-day="1" date-disabled="disabled(date, mode)" min="minDate" max="'2015-06-22'"></datepicker>
+	      		<input ui-date="dateOptions" ng-model="feed.addReviewDate"></input>
 	      		<h4>{{feed.addReviewDate}}</h4>
 
 	      		<label for="reviewmeal">What meal did you have?</label>

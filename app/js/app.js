@@ -8,7 +8,8 @@ var foodStampsModule = angular.module('foodStamps',
          'foodStamps.directives',
          'angular-hovercard',
          'directive.g+signin',
-         'google-maps']).
+         'google-maps',
+         'ui.date']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: 'HomeController'});
     $routeProvider.when('/restaurants', {templateUrl: 'partials/restaurants.html', controller: 'RestaurantsController'});

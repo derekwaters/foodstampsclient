@@ -28,6 +28,12 @@ foodStampsModule.controller('RestaurantsController',[
 				}
 			}
 
+			$scope.dateOptions = {
+        		changeYear: true,
+        		changeMonth: true,
+        		yearRange: '1900:-0'
+    		};
+
 			$scope.feed = {};
 			$scope.feed.addReviewText = null;
 			$scope.feed.posts = Posts.getPosts($scope.theRestaurant.id);

@@ -55,18 +55,17 @@ foodStampsDirectives.directive('tab', function() {
 
 foodStampsDirectives.directive('userbadge', ['Users', function(Users) {
     return {
-        restrict: 'E',
+        restrict: 'A',
         replace: true,
         transclude: false,
         scope:
         {
-          userid:'@userid'
         },
         link: function (scope, element, attrs)
         {
           scope.badge = {};
-          scope.badge.user = Users.get(scope.userid);
-          scope.badge.url = Users.getUserUrl(scope.userid);
+          scope.badge.user = Users.get(attrs.userid);
+          scope.badge.url = Users.getUserUrl(attrs.userid);
         },
         template:
           '<div class="userbadge"><a href="{{badge.url}}">' +

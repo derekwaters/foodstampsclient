@@ -61,7 +61,8 @@ foodStampsServices.factory('Users',
 	function()
 	{
 		var usersService = {};
-		usersService.currentId = undefined;
+		// usersService.currentId = undefined;
+		usersService.currentId = 1;
 		usersService.query = function()
 		{
 			return dummyUserData;
