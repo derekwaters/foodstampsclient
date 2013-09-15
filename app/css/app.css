@@ -1,5 +1,26 @@
 /* app css stylesheet */
 
+body.waiting-for-angular div#container
+{
+  display: none;
+}
+
+body.waiting-for-angular div#loading-panel
+{
+  display: block;
+  background-color: black;
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+}
+
+body div#loading-panel
+{
+  display: none;
+}
+
 .welcome
 {
   position: fixed;

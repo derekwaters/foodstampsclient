@@ -4,6 +4,18 @@
 
 var foodStampsDirectives = angular.module('foodStamps.directives', []);
 
+foodStampsDirectives.directive('angularLoader', function()
+{
+  return {
+    restrict: 'C',
+    link: function(scope, elem, attrs)
+    {
+      elem.removeClass('waiting-for-angular');
+      // Any other initialisation?
+    }
+  }
+});
+
 foodStampsDirectives.directive('tabset', function() {
     return {
       restrict: 'E',
