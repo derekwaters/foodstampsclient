@@ -56,13 +56,21 @@ foodStampsServices.factory('Restaurants',
 	function()
 	{
 		var restaurantService = {};
-		restaurantService.query = function()
+		restaurantService.query = function(filterText, resultFunction)
 		{
-			return dummyRestaurantData;
+			var resultList = [];
+			for (var i = 0; i < dummyRestaurantData.length; i++)
+			{
+				if (dummyRestaurantData[i].name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0)
+				{
+					resultList.push(dummyRestaurantData[i]);
+				}
+			}
+			resultFunction(resultList);
 		};
 		restaurantService.get = function(id)
 		{
-			var searchData = restaurantService.query();
+			var searchData = dummyRestaurantData;
 			if (id > 0)
 			{
 				for (var i = 0; i < searchData.length; i++)

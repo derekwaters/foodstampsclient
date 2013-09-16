@@ -1,5 +1,12 @@
 <h1>The Restaurants</h1>
-<input type="text" ng-model="search" class="search-query" placeholder="Search">
-<div ng-repeat="rest in allRestaurants | filter:search | orderBy:'name'">
-	<a href="#/restaurants/{{rest.id}}">{{rest.name}}</a>
+<input type="text" ng-model="search" ng-change="onRestaurantSearch()" class="search-query" placeholder="Search">
+<div ng-hide="searchRestaurants.isSearching">
+<div ng-repeat="rest in searchRestaurants.list" class="restaurant-search-block">
+	<a href="#/restaurants/{{rest.id}}">
+		<div class="restaurant-search-block-title">{{rest.name}}</div>
+	</a>
+</div>
+</div>
+<div ng-hide="!searchRestaurants.isSearching">
+	Searching...
 </div>

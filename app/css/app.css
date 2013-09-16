@@ -181,7 +181,23 @@ a
   font-size: 0.7em;
 }
 
+.restaurant-search-block
+{
+  display: inline-block;
+  width: 300px;
+  height: 160px;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  background-color: #333333;
+  padding: 1em;
+}
 
+.restaurant-search-block-title
+{
+  float: left;
+  font-size: 1.2em;
+}
 
 
 /*

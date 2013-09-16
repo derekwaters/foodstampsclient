@@ -70,7 +70,26 @@ foodStampsModule.controller('RestaurantsController',[
 		}
 		else
 		{
-			$scope.allRestaurants = Restaurants.query();
+			$scope.searchRestaurants = {};
+			$scope.searchRestaurants.isSearching = false;
+			$scope.searchRestaurants.list = [];
+
+			$scope.onRestaurantSearch = function()
+			{
+				if ($scope.search.length > 0)
+				{
+					$scope.searchRestaurants.isSearching = true;
+					Restaurants.query($scope.search, function(newList)
+	                    {
+	                        $scope.searchRestaurants.list = newList;
+	                        $scope.searchRestaurants.isSearching = false;
+	                    });
+				}
+				else
+				{
+					$scope.searchRestaurants.list = [];
+				}
+			}
 		}
 	}
 ]);
