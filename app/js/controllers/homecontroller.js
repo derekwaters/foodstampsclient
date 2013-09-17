@@ -6,42 +6,55 @@ foodStampsModule.controller('HomeController',[
 	'$scope', 'Feed', 'Users', 'Lists', 'Restaurants', 'Posts', 'Stamps',
 	function($scope, Feed, Users, Lists, Restaurants, Posts, Stamps)
 	{
-		var theFeed = Feed.getFeed(Users.getCurrentUser());
-		$scope.feedItems = [];
+		$scope.feed = {};
+		$scope.feed.busy = false;
+		$scope.feed.items = [];
+		$scope.feed.nextItems = 0;
 
-		for (var i = 0; i < theFeed.length && i < 100; i++)
+		$scope.feed.nextPage = function()
 		{
-			var feedItem = theFeed[i];
-			if (feedItem.otheruser !== undefined)
+			if ($scope.feed.busy)
+				return;
+			$scope.feed.busy = true;
+
+			var newItems = Feed.getFeed(Users.getCurrentUser());
+
+			for (var i = 0; i < newItems.length && i < 100; i++)
 			{
-				feedItem.otheruser = Users.get(feedItem.otheruser);
-				feedItem.otheruser.url = Users.getUserUrl(feedItem.otheruser.id);
-			}
-			if (feedItem.restaurantref !== undefined)
-			{
-				feedItem.restaurant = Restaurants.get(feedItem.restaurantref);
-				feedItem.restaurant.url = Restaurants.getRestaurantUrl(feedItem.restaurantRef);
-			}
-			if (feedItem.reviewref !== undefined)
-			{
-				feedItem.review = Posts.get(feedItem.reviewref);
-				// TODO: DEBUG ONLY!
-				if (feedItem.review === undefined)
+				var feedItem = newItems[i];
+				if (feedItem.otheruser !== undefined)
 				{
-					feedItem.review = {};
+					feedItem.other = Users.get(feedItem.otheruser);
+					feedItem.other.url = Users.getUserUrl(feedItem.otheruser);
 				}
-				feedItem.review.url = Posts.getPostUrl(feedItem.reviewref);
+				if (feedItem.restaurantref !== undefined)
+				{
+					feedItem.restaurant = Restaurants.get(feedItem.restaurantref);
+					feedItem.restaurant.url = Restaurants.getRestaurantUrl(feedItem.restaurantRef);
+				}
+				if (feedItem.reviewref !== undefined)
+				{
+					feedItem.review = Posts.get(feedItem.reviewref);
+					// TODO: DEBUG ONLY!
+					if (feedItem.review === undefined)
+					{
+						feedItem.review = {};
+					}
+					feedItem.review.url = Posts.getPostUrl(feedItem.reviewref);
+				}
+				if (feedItem.listref !== undefined)
+				{
+					feedItem.list = Lists.get(feedItem.listref);
+					feedItem.list.url = Lists.getListUrl(feedItem.listref);
+				}
+				if (feedItem.achievementref !== undefined)
+				{
+					feedItem.achievement = Stamps.get(feedItem.achievementref);
+				}
+				$scope.feed.items.push(feedItem);
 			}
-			if (feedItem.listref !== undefined)
-			{
-				feedItem.list = Lists.get(feedItem.listref);
-				feedItem.list.url = Lists.getListUrl(feedItem.listref);
-			}
-			if (feedItem.achievementref !== undefined)
-			{
-				feedItem.achievement = Stamps.get(feedItem.achievementref);
-			}
-			$scope.feedItems.push(feedItem);
-		}
+
+			$scope.feed.busy = false;
+		};
 	}
 ]);
