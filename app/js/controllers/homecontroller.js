@@ -9,7 +9,7 @@ foodStampsModule.controller('HomeController',[
 		$scope.feed = {};
 		$scope.feed.busy = false;
 		$scope.feed.items = [];
-		$scope.feed.nextItems = 0;
+		$scope.feed.lastId = null;
 
 		$scope.feed.nextPage = function()
 		{
@@ -17,7 +17,7 @@ foodStampsModule.controller('HomeController',[
 				return;
 			$scope.feed.busy = true;
 
-			var newItems = Feed.getFeed(Users.getCurrentUser());
+			var newItems = Feed.getFeed(Users.getCurrentUser(), $scope.feed.lastId);
 
 			for (var i = 0; i < newItems.length && i < 100; i++)
 			{
@@ -52,6 +52,7 @@ foodStampsModule.controller('HomeController',[
 					feedItem.achievement = Stamps.get(feedItem.achievementref);
 				}
 				$scope.feed.items.push(feedItem);
+				$scope.feed.lastId = feedItem.id;
 			}
 
 			$scope.feed.busy = false;

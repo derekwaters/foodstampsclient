@@ -18,15 +18,7 @@ foodStampsModule.controller('RestaurantsController',[
 			restaurantMarker.longitude = $scope.map.center.longitude;
 			$scope.map.markers.push(restaurantMarker);
 
-			$scope.inLists = [];
-			var allLists = Lists.query();
-			for (var i = 0; i < allLists.length; i++)
-			{
-				if (allLists[i].restaurants.indexOf($scope.theRestaurant.id) >= 0)
-				{
-					$scope.inLists.push(allLists[i]);
-				}
-			}
+			$scope.inLists = Lists.queryContaining($scope.theRestaurant.id);
 
 			$scope.dateOptions = {
         		changeYear: true,

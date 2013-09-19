@@ -16,13 +16,35 @@ foodStampsServices.factory('Lists',
 	function()
 	{
 		var listService = {};
-		listService.query = function()
+		listService.query = function(filterText, resultFunction)
 		{
-			return dummyListData;
+			var resultList = [];
+			var checkFilter = filterText.toLowerCase();
+			for (var i = 0; i < dummyListData.length; i++)
+			{
+				if (dummyListData[i].name.toLowerCase().indexOf(checkFilter) >= 0 ||
+					dummyListData[i].description.toLowerCase().indexOf(checkFilter) >= 0)
+				{
+					resultList.push(dummyListData[i]);
+				}
+			}
+			resultFunction(resultList);
 		};
+		listService.queryContaining = function(restaurantId)
+		{
+			var results = [];
+			for (var i = 0; i < dummyListData.length; i++)
+			{
+				if (dummyListData[i].restaurants.indexOf(restaurantId) >= 0)
+				{
+					results.push(dummyListData[i]);
+				}
+			}
+			return results;
+		}
 		listService.get = function(id)
 		{
-			var searchData = listService.query();
+			var searchData = dummyListData;
 			if (id > 0)
 			{
 				for (var i = 0; i < searchData.length; i++)

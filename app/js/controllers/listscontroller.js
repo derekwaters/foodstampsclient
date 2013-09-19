@@ -13,9 +13,28 @@ foodStampsModule.controller('ListsController',[
 		}
 		else
 		{
-			$scope.allLists = Lists.query();
 			$scope.joinedLists = [];
-			$scope.listFilter = '';
+			$scope.searchLists = {};
+			$scope.searchLists.isSearching = false;
+			$scope.searchLists.list = [];
+			$scope.searchLists.search = '';
+
+			$scope.onListSearch = function()
+			{
+				if ($scope.searchLists.search.length > 0)
+				{
+					$scope.searchLists.isSearching = true;
+					Lists.query($scope.searchLists.search, function(newList)
+	                    {
+	                        $scope.searchLists.list = newList;
+	                        $scope.searchLists.isSearching = false;
+	                    });
+				}
+				else
+				{
+					$scope.searchLists.list = [];
+				}
+			}
 
 			var joinedLists = Users.getJoinedLists();
 			for (var i = 0; i < joinedLists.length; i++)

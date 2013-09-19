@@ -1,9 +1,14 @@
 <p>The Lists.</p>
 <tabset>
 	<tab heading="All">
-		<input type="text" ng-model="search" class="search-query" placeholder="Search">
-		<div ng-repeat="list in allLists | filter:search | orderBy:'name'">
-			<a href="#/lists/{{list.id}}">{{list.name}}</a>
+		<input type="text" ng-model="searchLists.search" ng-change="onListSearch()" class="search-query" placeholder="Search Lists">
+		<div ng-hide="searchLists.isSearching">
+			<div ng-repeat="list in searchLists.list">
+				<a href="#/lists/{{list.id}}">{{list.name}}</a>
+			</div>
+		</div>
+		<div ng-hide="!searchLists.isSearching">
+			Searching...
 		</div>
 	</tab>
 	<tab heading="Joined">
