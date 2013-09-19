@@ -29,7 +29,8 @@
 			    <h4>{{feed.addReviewMealType}}</h4>
 
 	      		<label for="reviewrating">How did you rate it?</label>
-	      		<rating value="feed.addReviewScore" max="5" readonly="false"></rating>
+	      		<div star-rating rating-value="feed.addReviewScore" max="5"></div>
+
 	      		<h4>{{feed.addReviewScore}}</h4>
 
 	        	<input type="text" ng-model="feed.addReviewText"  size="30" placeholder="Review"/>

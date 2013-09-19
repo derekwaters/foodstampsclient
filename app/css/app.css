@@ -209,187 +209,28 @@ a
   padding: 0.5em;
 }
 
-/*
 
 
-
-
-.tabbody
-
-{
-
-  margin:10px;
-
-  padding-bottom:20px;
-
-  display:none;
-
-}
-
-
-
-
-
-.socialbody
-
-{
-
-  margin: 10px;
-
-  padding: 4px;
-
-  background-color:#333;
-
-  clear:both;
-
-}
-
-
-
-.avatarlist img
-
-{
-
-  border-color:gold;
-
-  border:thin;
-
-  border-width:2px;
-
-}
-
-
-
-
-
-
-
-
-.menu-area
-
-{
-
-  float: left;
-
-  width:200px;
-
-}
-
-
-
-.menu-area ul
-
-{
-
-  list-style-type:none;
-
-}
-
-
-
-.profile-label
-
-{
-
-  font-size: 0.8em;
-
-  color:gold;
-
-}
-
-
-
-.profile-value
-
-{
-
-  font-size: 1.2em;
-
-  margin-bottom: 30px;
-
-}
-
-
-
-.user-tip
-
-{
-
-  border-style: solid;
-
-  border-width: 2px;
-
-  border-color: #111;
-
-  background-color: #222;
-
-  padding: 10px;
-
-  aawidth: 200px;
-
-  aaheight: 160px;
-
-}
-
-
-
-.user-tip-avatar
-
-{
-
-  clear: both;
-
-  float: left;
-
-  padding: 10px;
-
-}
-
-
-
-.user-tip-name
-
-{
-
-  border-bottom-style: solid;
-
-  border-width: 2px;
-
-  border-color: gold;
-
-}
-*/
-
-/*
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
+.star-rating{
+  color: #a9a9a9;
+  margin: 0;
   padding: 0;
+  font-size: 2em;
 }
 
+ul.star-rating {
+  display: inline-block;
+}
 
+.star-rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-*/
+.star-rating .filled {
+  color: gold;
+}

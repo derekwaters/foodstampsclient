@@ -16,6 +16,51 @@ foodStampsDirectives.directive('angularLoader', function()
   }
 });
 
+foodStampsDirectives.directive('starRating', function()
+{
+  return {
+    restrict: 'A',
+    template: '<ul class="star-rating">' +
+                  '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
+                      '\u2605' +
+                  '</li>' +
+                '</ul>',
+    scope: {
+        ratingValue: '=',
+        max: '=',
+        readOnly: '@'
+      },
+    link: function(scope, element, attrs)
+    {
+      var updateStars = function()
+      {
+        scope.stars = [];
+        for (var i = 0; i < scope.max; i++)
+        {
+          scope.stars.push({ filled: i < scope.ratingValue });
+        }
+      };
+
+      scope.$watch('ratingValue', function(oldVal, newVal)
+      {
+        if (newVal !== null)
+        {
+          updateStars();
+        }
+      });
+
+      scope.toggle = function(index)
+      {
+        if (scope.readOnly && scope.readOnly == "true")
+        {
+          return;
+        }
+        scope.ratingValue = index + 1;
+      };
+    }
+  }
+});
+
 foodStampsDirectives.directive('tabset', function() {
     return {
       restrict: 'E',
