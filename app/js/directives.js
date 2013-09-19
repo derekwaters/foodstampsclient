@@ -61,6 +61,35 @@ foodStampsDirectives.directive('starRating', function()
   }
 });
 
+foodStampsDirectives.directive('userBadge', ['Users', function(Users) {
+    return {
+        restrict: 'A',
+        scope:
+        {
+          userId: '='
+        },
+        link: function (scope, element, attrs)
+        {
+          var refreshBadge = function()
+          {
+            scope.badge = {};
+            scope.badge.user = Users.get(scope.userId);
+            scope.badge.url = Users.getUserUrl(scope.userId);
+          }
+
+          scope.$watch('user', function(oldVal, newVal)
+          {
+            refreshBadge();
+          });
+        },
+        template:
+          '<div class="userbadge"><a href="{{badge.url}}">' +
+            '<div class="userbadge-name">{{badge.user.name}}</div>' +
+            '<div class="userbadge-avatar">IMG HERE</div>' +
+          '</a></div>'
+    };
+  }]);
+
 foodStampsDirectives.directive('tabset', function() {
     return {
       restrict: 'E',
@@ -109,28 +138,6 @@ foodStampsDirectives.directive('tab', function() {
       replace: true
     };
   })
-
-foodStampsDirectives.directive('userbadge', ['Users', function(Users) {
-    return {
-        restrict: 'A',
-        replace: true,
-        transclude: false,
-        scope:
-        {
-        },
-        link: function (scope, element, attrs)
-        {
-          scope.badge = {};
-          scope.badge.user = Users.get(attrs.userid);
-          scope.badge.url = Users.getUserUrl(attrs.userid);
-        },
-        template:
-          '<div class="userbadge"><a href="{{badge.url}}">' +
-            '<div class="userbadge-name">{{badge.user.name}}</div>' +
-            '<div class="userbadge-avatar">IMG HERE</div>' +
-          '</a></div>'
-    };
-  }]);
 
 
 foodStampsDirectives.directive('fileInput', ['$parse', function($parse)

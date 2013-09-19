@@ -23,12 +23,12 @@
 	</tab>
 	<tab heading="Following">
 		<div ng-repeat="following in profileUser.following">
-			<userbadge userid="{{following}}"></userbadge>
+			<div user-badge user-id="following"></userbadge>
 		</div>
 	</tab>
 	<tab heading="Followers">
 		<div ng-repeat="followedBy in profileUser.followedBy">
-			<userbadge userid="{{followedBy}}"></userbadge>
+			<div user-badge user-id="followedBy"></userbadge>
 		</div>
 	</tab>
 	<tab heading="Stamps">
