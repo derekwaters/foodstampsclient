@@ -234,3 +234,60 @@ ul.star-rating {
 .star-rating .filled {
   color: gold;
 }
+
+
+
+
+
+.userbadge
+{
+  display: inline-block;
+  position: relative;
+  width: 5em;
+  height: 6.2em;
+  margin: 0.1em;
+  background-color: #333333;
+  padding: 0.1em;
+}
+
+.userbadge img
+{
+  width: 4.6em;
+  height: 4.6em;
+  border: solid 0.2em black;
+}
+
+.userbadge-name
+{
+  margin-top: 0.2em;
+  text-align: center;
+  font-size: 0.6em;
+  white-space: nowrap;
+}
+
+.userbadge-caret
+{
+  position: absolute;
+  right: 0.1em;
+  bottom: 0.0em;
+  cursor: pointer;
+}
+
+.userbadge-menu
+{
+  position: fixed;
+  display: none;
+
+  background-color: #333333;
+  border: solid 1px #555555;
+}
+
+.userbadge-menu ul
+{
+  text-decoration: none;
+}
+
+.userbadge-menu li
+{
+  width: 100%;
+}

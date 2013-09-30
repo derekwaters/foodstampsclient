@@ -100,6 +100,10 @@ foodStampsServices.factory('Users',
 		{
 			return "#/profile/" + userId;
 		}
+		usersService.getUserAvatarUrl = function(userId)
+		{
+			return "/avatar/" + userId;
+		}
 		usersService.updateUser = function(userProfile)
 		{
 			var	searchData = usersService.query();

@@ -70,11 +70,17 @@ foodStampsDirectives.directive('userBadge', ['Users', function(Users) {
         },
         link: function (scope, element, attrs)
         {
+          scope.onBadgeMenuClick = function()
+          {
+            alert('Thanks for clicking!');
+          }
+
           var refreshBadge = function()
           {
             scope.badge = {};
             scope.badge.user = Users.get(scope.userId);
             scope.badge.url = Users.getUserUrl(scope.userId);
+            scope.badge.avatarurl = Users.getUserAvatarUrl(scope.userId);
           }
 
           scope.$watch('user', function(oldVal, newVal)
@@ -84,9 +90,11 @@ foodStampsDirectives.directive('userBadge', ['Users', function(Users) {
         },
         template:
           '<div class="userbadge"><a href="{{badge.url}}">' +
-            '<div class="userbadge-name">{{badge.user.name}}</div>' +
-            '<div class="userbadge-avatar">IMG HERE</div>' +
-          '</a></div>'
+            '<img src="{{badge.avatarurl}}">' +
+            '<div class="userbadge-name">{{badge.user.name}}</div></a>' +
+            '<div class="userbadge-caret" ng-click="onBadgeMenuClick">...</div>' +
+            '<div class="userbadge-menu"><ul><li>Follow</li><li>Profile</li><li>Block</li></ul></div>' +
+          '</div>'
     };
   }]);
 
