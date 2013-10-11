@@ -11,7 +11,7 @@
 <body ng-controller="FrameController" class="angular-loader waiting-for-angular" id="fsroot">
   <div ng-hide="true" class="jswarning">Javascript is required for this website.</div>
   <div id="loading-panel">Loading...</div>
-  <div ng-switch on="auth.loginState">
+  <div ng-switch on="auth.loginState" class="container">
     <div ng-switch-when="checkingLogin" class="welcome">
       Please wait while we log you in...
 
@@ -24,7 +24,7 @@
     </div>
     <div ng-switch-when="loggedIn">
 
-      <div id="container" class="container">
+      <div id="container">
         <div class="header-area">
           <div class="header-logo">LOGO GOES HERE</div>
           <div class="search-bar" ng-controller="SearchController">
