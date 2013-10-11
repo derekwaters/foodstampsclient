@@ -6,21 +6,25 @@ foodStampsModule.controller('FrameController',[
 	'$scope', 'Users',
 	function($scope, Users)
 	{
-		$scope.currentUser = Users.getCurrentUser();
-		$scope.hasCurrentUser = function()
+		$scope.auth = {};
+		$scope.auth.loginState = 'checkingLogin';
+		$scope.auth.handleSignin = function(authResult)
 		{
-			return ($scope.currentUser != null);
+			if (authResult['access_token'])
+			{
+				$scope.auth.currentUser = Users.getCurrentUser();
+				$scope.auth.loginState = 'loggedIn';
+			}
+			else
+			{
+				$scope.auth.currentUser = null;
+				$scope.auth.loginState = 'notLoggedIn';
+			}
 		}
 
-		$scope.$watch('Users.currentId', function(newValue, oldValue)
+		$scope.auth.hasCurrentUser = function()
 		{
-			$scope.currentUser = Users.getCurrentUser();
-		});
-
-		$scope.doTheThing = function()
-		{
-			dummyCurrentUser = 1;
-			$scope.currentUser = Users.getCurrentUser();
+			return ($scope.auth.currentUser != null);
 		}
 	}
 ]);

@@ -37,23 +37,9 @@ var dummyUserData = [
 
 function signinCallback(authResult)
 {
-	console.log(authResult);
-	if (authResult['access_token'])
-	{
-		var injector = angular.element(document.getElementById('fsroot')).injector();
-		if (injector)
-		{
-			var usersService = injector.get('Users');
-			if (usersService)
-			{
-				usersService.setCurrentUser(1);
-			}
-		}
-	}
-	//else
-	//{
-	//	alert("Boo!");
-	//}
+	var checkScope = angular.element(document.getElementById('fsroot')).scope();
+	checkScope.auth.handleSignin(authResult);
+	checkScope.$apply();
 }
 
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="foodStamps" id="fsroot">
+<html lang="en" ng-app="foodStamps">
 <head>
   <meta charset="utf-8">
   <title>Foodstamps</title>
@@ -8,46 +8,54 @@
   <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css"/>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto"/>
 </head>
-<body ng-controller="FrameController" class="angular-loader waiting-for-angular">
+<body ng-controller="FrameController" class="angular-loader waiting-for-angular" id="fsroot">
   <div ng-hide="true" class="jswarning">Javascript is required for this website.</div>
   <div id="loading-panel">Loading...</div>
-  <div id="container" class="container">
-    <div class="header-area">
-      <div class="header-logo">LOGO GOES HERE</div>
-      <div class="search-bar" ng-controller="SearchController">
-        <form ng-submit="search.doSearch()">
-          <input type="text" ng-model="search.text" size="20" placeholder="Search"/>
-          <input class="btn-primary" type="submit" value="Search"/>
-        </form>
-      </div>
-      <div class="user-area">
+  <div ng-switch on="auth.loginState">
+    <div ng-switch-when="checkingLogin" class="welcome">
+      Please wait while we log you in...
 
-        <div ng-hide="!hasCurrentUser()">
-          <div user-badge user-id="currentUser.id"></div>
-        </div>
-        <div ng-hide="hasCurrentUser()" class="welcome">
-          Put blurb here about how freakin awesome FOodstamps is, and why you should use your G+ account to signup.<br/><br/>
+      <div style="width: 0px;"><g+signin clientid="103343269498-h476el94jmvopof53do1ssnjdokm1s5s" data-theme="dark"></g+signin></div>
+    </div>
+    <div ng-switch-when="notLoggedIn" class="welcome">
+      Put blurb here about how freakin awesome FOodstamps is, and why you should use your G+ account to signup.<br/><br/>
 
-          <!-- <g+signin clientid="103343269498-h476el94jmvopof53do1ssnjdokm1s5s" data-theme="dark"></g+signin> -->
+      <g+signin clientid="103343269498-h476el94jmvopof53do1ssnjdokm1s5s" data-theme="dark"></g+signin>
+    </div>
+    <div ng-switch-when="loggedIn">
+
+      <div id="container" class="container">
+        <div class="header-area">
+          <div class="header-logo">LOGO GOES HERE</div>
+          <div class="search-bar" ng-controller="SearchController">
+            <form ng-submit="search.doSearch()">
+              <input type="text" ng-model="search.text" size="20" placeholder="Search"/>
+              <input class="btn-primary" type="submit" value="Search"/>
+            </form>
+          </div>
+          <div class="user-area">
+           <div user-badge user-id="auth.currentUser.id"></div>
+          </div>
         </div>
+        <div class="body-area">
+          <div class="menu-area">
+            <ul class="menu">
+              <li><a href="#/">Home</a></li>
+              <li><a href="#/restaurants">Restaurants</a></li>
+              <li><a href="#/lists">Lists</a></li>
+              <li><a href="#/profile">Profile</a></li>
+              <li ng-hide="!auth.currentUser.isAdmin"><a href="#/editstamps">Edit Stamps</a></li>
+            </ul>
+          </div>
+          <div class="content-area" ng-view>
+          </div>
+          <div class="extra-area">
+          </div>
+        </div>
+        <div class="footer">FoodStamps .privacy... ...contact... </div>
       </div>
+
     </div>
-    <div class="body-area">
-      <div class="menu-area">
-        <ul class="menu">
-          <li><a href="#/">Home</a></li>
-          <li><a href="#/restaurants">Restaurants</a></li>
-          <li><a href="#/lists">Lists</a></li>
-          <li><a href="#/profile">Profile</a></li>
-          <li ng-hide="!currentUser.isAdmin"><a href="#/editstamps">Edit Stamps</a></li>
-        </ul>
-      </div>
-      <div class="content-area" ng-view>
-      </div>
-      <div class="extra-area">
-      </div>
-    </div>
-    <div class="footer">FoodStamps .privacy... ...contact... </div>
   </div>
 
   <!-- In production use:
