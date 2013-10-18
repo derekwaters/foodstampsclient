@@ -47,8 +47,35 @@ foodStampsServices.factory('Users',
 	function()
 	{
 		var usersService = {};
-		// usersService.currentId = undefined;
-		usersService.currentId = 1;
+		usersService.currentId = undefined;
+		// usersService.currentId = 1;
+
+		usersService.loginUser = function(emailAddress, resultCallback)
+		{
+			// TODO: Do some AJAX to the API here
+			//
+			resultCallback({ unknownUser : '1',
+							 userEmail: emailAddress });
+		}
+
+		usersService.registerUser = function(displayName, emailAddress, avatarUrl, genderStr, registerCallback)
+		{
+			// TODO: Do some AJAX stuff here
+			var newUser = { id : 500,
+							name: displayName,
+							email: emailAddress,
+							avatar: null,		// TODO: Make this work
+							gender: genderStr,
+							location: null,
+							tutorialProgress: 0,
+							isAdmin: false,
+							following: [],
+							followedBy: [] };
+			dummyUserData.push(newUser);
+			usersService.currentId = newUser.id;
+			registerCallback();
+		}
+
 		usersService.query = function()
 		{
 			return dummyUserData;
